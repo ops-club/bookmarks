@@ -1,0 +1,36 @@
+{% from 'search.html' import search %}
+{% from 'tile.html' import tile %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ account_name }}</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ account_name }}</h1>
+        {{ search(tags) }}
+        <div>
+            <!-- <h2>Pinned</h2> -->
+            <div class="row">
+                {% for bm in pinned_bookmarks %}
+                    {{ tile(bm) }}
+                {% endfor %}
+            </div>
+        </div>
+        <hr />
+        {% for folder, bms in grouped_bookmarks.items() %}
+        <h2>{{ folder }}</h2>
+        <div class='row'>
+            {% for bm in bms %}
+                {{ tile(bm) }}
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

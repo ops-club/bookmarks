@@ -1,0 +1,14 @@
+{% macro search(tags) %}
+<div>
+    <h2>Tags</h2>
+    <div id="tag-container" class="tag-container">
+        {% for tag in tags %}
+        <span class='chip' onclick='filterByTag("{{ tag }}")'>{{ tag }}</span>
+        {% endfor %}
+        <button onclick="clearFilters()" class="btn">Clear Filters</button>
+    </div>
+</div>
+<div class="search-container">
+    <input type="text" id="search" placeholder="Rechercher..." onkeyup="filterBookmarks()">
+</div>
+{% endmacro %}

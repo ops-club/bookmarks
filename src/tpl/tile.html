@@ -1,0 +1,16 @@
+{% macro tile(bm) %}
+<div class="col s12 m4 l3">
+    <div class="tile" onclick="window.location.href='{{ bm.url }}'" data-tags="{{ bm.tags | join(' ') }}">
+        <img src="{{ bm.favicon_url }}" onerror="this.src='default.ico'" alt="favicon" class="favicon" >
+        <div class="tile-content">
+            <h5>{{ bm.title }}</h5>
+            <hr>
+            <div class="tags">
+                {% for tag in bm.tags | sort %}
+                    <span class='chip' onclick='filterByTag("{{ tag }}", event)'>{{ tag }}</span>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endmacro %}

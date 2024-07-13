@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.chip {
+    display: inline-block;
+    padding: 0 10px;
+    height: 24px;
+    font-size: 12px;
+    line-height: 24px;
+    border-radius: 16px;
+    background-color: #e0e0e0;
+    margin: 2px;
+    cursor: pointer;
+}
+
+.chip.selected {
+    background-color: #00acc1;
+    color: white;
+}
+
+.tile {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.tile:hover {
+    background-color: #f0f0f0;
+}
+
+.tile img.favicon {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+}
+
+.tile-content {
+    flex: 1;
+}
+
+.tile-content h5 {
+    margin: 0 0 5px;
+    font-size: 18px;
+}
+
+.tile-content .tags {
+    display: flex;
+    flex-wrap: wrap;
+}
