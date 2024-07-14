@@ -12,3 +12,15 @@
     <input type="text" id="search" placeholder="Rechercher..." onkeyup="filterBookmarks()">
 </div>
 {% endmacro %}
+
+{% macro search_sidebar(tags) %}
+
+<input type="text" id="search" placeholder="Search...">
+<div id="tag-container">
+    {% for tag in tags %}
+    <span class="chip" onclick="filterByTag('{{ tag }}', event)">{{ tag }}</span>
+    {% endfor %}
+</div>
+<button onclick="clearFilters()">Clear Filters</button>
+
+{% endmacro %}

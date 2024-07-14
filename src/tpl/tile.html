@@ -1,16 +1,24 @@
-{% macro tile(bm) %}
-<div class="col s12 m4 l3">
-    <div class="tile" onclick="window.location.href='{{ bm.url }}'" data-tags="{{ bm.tags | join(' ') }}">
-        <img src="{{ bm.favicon_url }}" onerror="this.src='default.ico'" alt="favicon" class="favicon" >
-        <div class="tile-content">
-            <h5>{{ bm.title }}</h5>
-            <hr>
-            <div class="tags">
-                {% for tag in bm.tags | sort %}
-                    <span class='chip' onclick='filterByTag("{{ tag }}", event)'>{{ tag }}</span>
-                {% endfor %}
-            </div>
+{% macro tile_pinned(bookmark) %}
+
+<div class="pinned-tile" onclick="window.location.href='{{ bookmark.url }}'">
+    <img src="{{ bookmark.favicon_url }}" onerror="this.src='default.ico'" alt="{{ bookmark.title }}" title="{{ bookmark.title }}" class="pinned-favicon">
+</div>
+
+{% endmacro %}
+
+
+{% macro tile(bookmark) %}
+
+<div class="tile" data-tags="{{ ' '.join(bookmark.tags) }}" onclick="window.location.href='{{ bookmark.url }}'">
+    <img src="{{ bookmark.favicon_url }}" alt="{{ bookmark.title }}" title="{{ bookmark.title }}" class="favicon">
+    <div class="tile-content">
+        <h5>{{ bookmark.title }}</h5>
+        <div class="tags">
+            {% for tag in bookmark.tags %}
+            <span class="chip" onclick="filterByTag('{{ tag }}', event)">{{ tag }}</span>
+            {% endfor %}
         </div>
     </div>
 </div>
+
 {% endmacro %}

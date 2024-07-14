@@ -1,34 +1,58 @@
-{% from 'search.html' import search %}
-{% from 'tile.html' import tile %}
+{% from 'search.html' import search, search_sidebar %}
+{% from 'tile.html' import tile, tile_pinned %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>{{ account_name }}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>{{ account_name }}</h1>
-        {{ search(tags) }}
-        <div>
-            <!-- <h2>Pinned</h2> -->
-            <div class="row">
-                {% for bm in pinned_bookmarks %}
-                    {{ tile(bm) }}
+        <div class="sidebar">
+            <h3>{{ account_name }}</h3>
+            <hr />
+            <div id="pinned-container">
+                {% for bookmark in bookmarks if bookmark.pin %}
+                    {{ tile_pinned(bookmark) }}
                 {% endfor %}
             </div>
+            <hr />
+            {{ search_sidebar(tags) }}
         </div>
-        <hr />
-        {% for folder, bms in grouped_bookmarks.items() %}
-        <h2>{{ folder }}</h2>
-        <div class='row'>
-            {% for bm in bms %}
-                {{ tile(bm) }}
+        
+        
+        <div class="content">
+            {% include 'search-bar.html' %}
+            
+            <div id="bookmarks-container">
+            {% set current_folder = namespace(value=None) %}
+            {% for bookmark in bookmarks if not bookmark.pin %}
+                {% if bookmark.folder != current_folder.value %}
+                    {% if not loop.first %}
+                        </div>
+                    {% endif %}
+                    <h5>{{ bookmark.folder }}</h5>
+                    <div class="folder-group">
+                    {% set current_folder.value = bookmark.folder %}
+                {% endif %}
+                
+                {{ tile(bookmark) }}
+                
+                {% if loop.last %}
+                    </div>
+                {% endif %}
             {% endfor %}
+            </div>
+
+
+            
+
         </div>
-        {% endfor %}
+
     </div>
 
     <script src="script.js"></script>

@@ -1,59 +1,200 @@
 body {
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
-    width: 80%;
-    margin: 0 auto;
+    display: flex;
+    height: 100vh;
+    margin-left:0;
 }
 
-.chip {
-    display: inline-block;
-    padding: 0 10px;
-    height: 24px;
-    font-size: 12px;
-    line-height: 24px;
-    border-radius: 16px;
+.sidebar {
+    width: 270px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    flex-shrink: 0;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+}
+
+.pinned-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.pinned-tile {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: inline-block; /* Use inline-block to make them flow horizontally */
+    margin-right: 10px; /* Add spacing between pinned tiles */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.pinned-favicon {
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar input[type="text"] {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.sidebar #tag-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.sidebar .chip {
     background-color: #e0e0e0;
-    margin: 2px;
+    border-radius: 16px;
+    /* padding: 8px 12px; */
+    margin: 4px;
     cursor: pointer;
 }
 
-.chip.selected {
-    background-color: #00acc1;
+.sidebar .chip.selected {
+    background-color: #007bff;
     color: white;
 }
 
-.tile {
-    display: flex;
-    align-items: center;
+.sidebar button {
+    display: block;
+    width: 100%;
     padding: 10px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    margin-bottom: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
 }
 
-.tile:hover {
-    background-color: #f0f0f0;
+.sidebar button:hover {
+    background-color: #0056b3;
 }
 
-.tile img.favicon {
+.content {
+    margin-left: 270px; /* Offset by the sidebar width */
+    padding: 20px;
+    width: calc(100% - 270px);
+    overflow-y: auto;
+}
+
+/* .content {
+    margin-left: 270px;
+    padding: 20px;
+    width: calc(100% - 270px);
+} */
+
+select#search-engine {
+    display: flex !important;
+    width: auto;
+}
+
+.search-bar {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.search-bar select,
+.search-bar input[type="text"],
+.search-bar button {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-bar button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.search-bar button:hover {
+    background-color: #0056b3;
+}
+
+h1, h2, h3 {
+    margin-top: 0;
+}
+
+#bookmarks-container {
+    display: block; /* Reset display property */
+}
+
+.folder-group {
+    margin-bottom: 20px;
+}
+
+.tile {
+    width: calc(30% - 20px);
+    margin: 10px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: inline-block; /* Use inline-block to make them flow horizontally */
+    vertical-align: top; /* Align tiles to the top of the line */
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.tile:hover {
+    transform: scale(1.05);
+}
+
+.favicon {
     width: 32px;
     height: 32px;
-    margin-right: 10px;
+    margin: 10px;
 }
 
 .tile-content {
-    flex: 1;
+    padding: 10px;
 }
 
 .tile-content h5 {
-    margin: 0 0 5px;
-    font-size: 18px;
+    margin: 0 0 10px 0;
+    font-size: 16px;
 }
 
 .tile-content .tags {
     display: flex;
     flex-wrap: wrap;
+}
+
+.tile-content .chip {
+    background-color: #e0e0e0;
+    border-radius: 16px;
+    /* padding: 4px 8px; */
+    margin: 2px;
+    cursor: pointer;
+}
+
+.tile-content .chip.selected {
+    background-color: #007bff;
+    color: white;
+}
+
+.tile-content .chip:hover {
+    background-color: #ccc;
 }
