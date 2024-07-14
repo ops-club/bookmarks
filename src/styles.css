@@ -139,11 +139,26 @@ h1, h2, h3 {
 
 .folder-group {
     margin-bottom: 20px;
-    display: none; /* Default state is collapsed */
+    display: block; /* Default state is expanded */
 }
 
 .folder-group.collapsed {
     display: block;
+}
+
+.folder-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.folder-header .arrow {
+    margin-right: 10px;
+    transition: transform 0.3s;
+}
+
+.folder-header .arrow.collapsed {
+    transform: rotate(-90deg);
 }
 
 .tile {

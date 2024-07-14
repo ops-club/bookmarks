@@ -70,22 +70,33 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     window.toggleFolder = function(header) {
         const folderGroup = header.nextElementSibling;
+        const arrow = header.querySelector('.arrow');
+
         if (folderGroup.style.display === 'none') {
             folderGroup.style.display = 'block';
+            arrow.classList.remove('collapsed');
         } else {
             folderGroup.style.display = 'none';
+            arrow.classList.add('collapsed');
         }
     };
 
     window.toggleAllFolders = function(action) {
         const folders = document.querySelectorAll('.folder-group');
-        folders.forEach(folder => {
+        const arrows = document.querySelectorAll('.folder-header .arrow');
+
+        folders.forEach((folder, index) => {
             folder.style.display = action === 'expand' ? 'block' : 'none';
+            if (action === 'expand') {
+                arrows[index].classList.remove('collapsed');
+            } else {
+                arrows[index].classList.add('collapsed');
+            }
         });
     };
 
     // Initially collapse all folders
-    document.querySelectorAll('.folder-group').forEach(folder => {
-        folder.style.display = 'none';
-    });
+    // document.querySelectorAll('.folder-group').forEach(folder => {
+    //     folder.style.display = 'none';
+    // });
 });

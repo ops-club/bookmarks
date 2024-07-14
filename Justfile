@@ -6,7 +6,7 @@ help:
     @echo ---
     @just --list
 
-run: venv
+build: venv
     @./.venv/bin/python3 main.py
 
 [private]
