@@ -35,7 +35,7 @@
                     {% if not loop.first %}
                         </div>
                     {% endif %}
-                    <h5>{{ bookmark.folder }}</h5>
+                    <h5 onclick="toggleFolder(this)">{{ bookmark.folder }}</h5>
                     <div class="folder-group">
                     {% set current_folder.value = bookmark.folder %}
                 {% endif %}
