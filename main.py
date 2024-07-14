@@ -6,6 +6,7 @@ import yaml
 import shutil
 from bs4 import BeautifulSoup
 from jinja2 import Environment, FileSystemLoader
+from urllib.parse import urlparse
 
 # Fonction pour récupérer le titre de la page à partir de l'URL si le titre est vide
 def get_page_title(url):
@@ -21,9 +22,13 @@ def get_page_title(url):
         print(f"Failed to get title for {url}: {e}")
     return ''
 
-def download_favicon(url, output_dir, favicon_output_dir):
-    favicon_url = f"https://www.google.com/s2/favicons?domain={url}&sz=128"
-    # print(f"favicon_url::{favicon_url}")
+def download_favicon(url, output_dir, favicon_output_dir, favicon_proxy=True):
+    if favicon_proxy:
+        favicon_url = f"https://www.google.com/s2/favicons?domain={url}&sz=128"
+    else:
+        parsed_uri = urlparse(url)
+        favicon_url = f"{parsed_uri.scheme}://{parsed_uri.netloc}/favicon.ico"
+
     response = requests.get(favicon_url)
     if response.status_code == 200:
         favicon = Image.open(BytesIO(response.content))
@@ -91,7 +96,14 @@ def generate_html_from_yaml(yaml_file):
                 title = get_page_title(url)
                 bm['title'] = title
             bm['favicon_url'] = download_favicon(bm['url'],output_dir, favicon_dir)
+        
+            favicon_url = bm.get('favicon_url', None)
+            if not favicon_url:
+                favicon_proxy = bm.get('favicon_proxy', True)
+                bm['favicon_url'] = download_favicon(bm['url'],output_dir, favicon_dir, favicon_proxy)
+
             compiled_bookmarks.append(bm)
+        
         # print(f"compiled_bookmarks::{compiled_bookmarks}")
         # pinned_bookmarks = [bm for bm in bookmarks if bm.get('pin', False)]
         # grouped_bookmarks = {}
