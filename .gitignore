@@ -1,4 +1,5 @@
 bookmarks.yaml
+bookmarks.d/*
 output
 .venv
 .DS_Store

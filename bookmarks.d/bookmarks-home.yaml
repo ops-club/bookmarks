@@ -1,0 +1,65 @@
+home:
+  email: me@acme.com
+  username: "🚀 Me."
+  bg-color: '#00FAFA'
+  bookmarks:
+  - folder: ai
+    pin: false
+    tags:
+    - ai
+    - chatgpt
+    title: Chat GPT
+    url: https://chatgpt.com/
+  - folder: azure
+    pin: false
+    url: https://portal.azure.com/#home
+  - folder: gcp
+    pin: false
+    title: GCP - PROD
+    url: https://console.cloud.google.com/welcome?organizationId=
+    tags:
+    - gcp
+  - folder: scm
+    pin: false
+    tags:
+    - gitlab
+    title: GitLab
+    url: https://gitlab.com/
+  - folder: scm
+    pin: false
+    tags:
+    - github
+    title: GitHub
+    url: https://github.com/
+  - folder: google
+    pin: false
+    title: Google Admin
+    url: https://admin.google.com/
+  - folder: misc
+    pin: false
+    title: Slack
+    url: https://slack.com/
+  - folder: platform
+    pin: false
+    url: https://my.pingdom.com/app/3/home
+  - folder: platform
+    pin: false
+    url: https://sonarcloud.io/projects
+  - folder: tools
+    pin: true
+    tags:
+    - outlook
+    - mail
+    url: https://outlook.office.com/mail/
+  - folder: tools
+    pin: false
+    tags:
+    - tools
+    - diagrams
+    url: https://app.diagrams.net/
+  - folder: tools
+    pin: false
+    tags:
+    - tools
+    - ssl
+    url: https://www.sslshopper.com/certificate-decoder.html

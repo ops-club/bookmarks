@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ account_name }}</title>
+    <title>{{ page_name }}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -13,7 +13,8 @@
 <body>
     <div class="container">
         <div class="sidebar">
-            <h3>{{ account_name }}</h3>
+            <h3>{{ page_name }}</h3>
+            <i>{{ date_now.strftime('%Y-%m-%d %H:%M:%S') }}</i>
             <hr />
             <div id="pinned-container">
                 {% for bookmark in bookmarks if bookmark.pin %}
@@ -36,10 +37,10 @@
                         </div>
                     {% endif %}
                     
-                    <div class="folder-header" onclick="toggleFolder(this)">
+                    <hgroup class="folder-header" onclick="toggleFolder(this)">
                         <span class="arrow">&#9662;</span>
-                        <h5>{{ bookmark.folder }}</h5>
-                    </div>
+                        <h6>{{ bookmark.folder }}</h6>
+                    </hgroup>
                     <div class="folder-group">
                     {% set current_folder.value = bookmark.folder %}
                 {% endif %}

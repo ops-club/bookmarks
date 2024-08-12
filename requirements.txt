@@ -1,5 +1,6 @@
 requests
 pyyaml
+pyyaml-include
 jinja2
 bs4
 pillow
