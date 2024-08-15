@@ -19,18 +19,6 @@ home:
     url: https://console.cloud.google.com/welcome?organizationId=
     tags:
     - gcp
-  - folder: scm
-    pin: false
-    tags:
-    - gitlab
-    title: GitLab
-    url: https://gitlab.com/
-  - folder: scm
-    pin: false
-    tags:
-    - github
-    title: GitHub
-    url: https://github.com/
   - folder: google
     pin: false
     title: Google Admin
@@ -45,6 +33,18 @@ home:
   - folder: platform
     pin: false
     url: https://sonarcloud.io/projects
+  - folder: scm
+    pin: false
+    tags:
+    - gitlab
+    title: GitLab
+    url: https://gitlab.com/
+  - folder: scm
+    pin: false
+    tags:
+    - github
+    title: GitHub
+    url: https://github.com/
   - folder: tools
     pin: true
     tags:

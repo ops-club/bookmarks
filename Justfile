@@ -10,9 +10,7 @@ build: sort venv
     @./.venv/bin/python3 main.py
 
 sort: venv
-    @./.venv/bin/python3 sort_yaml.py 'bookmarks.d/bookmarks-user.yaml'
-    @./.venv/bin/python3 sort_yaml.py 'bookmarks.d/bookmarks-admin.yaml'
-    @./.venv/bin/python3 sort_yaml.py 'bookmarks.d/bookmarks-partenaire.yaml'
+    @./.venv/bin/python3 sort_yaml.py 'bookmarks.d/'
 
 [private]
 venv:
