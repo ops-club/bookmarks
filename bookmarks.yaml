@@ -1,0 +1,1 @@
+accounts: !inc bookmarks.d/*.yaml
