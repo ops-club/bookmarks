@@ -23,6 +23,8 @@ home:
     pin: false
     title: Google Admin
     url: https://admin.google.com/
+    tags:
+    - production
   - folder: misc
     pin: false
     title: Slack
