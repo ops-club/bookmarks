@@ -2,6 +2,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let selectedTags = new Set();
     const tagContainer = document.getElementById('tag-container');
     const searchInput = document.getElementById('search');
+    // Trigger filtering when the user types in the #search input
+    searchInput.addEventListener('input', () => {
+        applyFilters();
+    });
+
     const searchQueryInput = document.getElementById('search-query');
     const searchEngineSelect = document.getElementById('search-engine');
 
@@ -100,3 +105,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
     //     folder.style.display = 'none';
     // });
 });
+
+window.executeSearch = function() {
+    const query = document.getElementById('search-query').value;
+    const searchEngine = document.getElementById('search-engine').value;
+    if (query) {
+        const searchUrl = searchEngine + encodeURIComponent(query);
+        window.open(searchUrl, '_blank');
+    }
+};

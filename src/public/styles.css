@@ -1,15 +1,54 @@
-body {
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-.container {
+body {
+    font-family: Arial, sans-serif;
     display: flex;
     height: 100vh;
 }
 
-.sidebar {
+/* Sidebar on the left */
+.sidebar-left {
+    width: 270px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    overflow-y: auto;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+/* Content section */
+.content {
+    margin-left: 270px;
+    padding: 20px;
+    flex-grow: 1;
+    background-color: #ffffff;
+    overflow-y: auto;
+}
+
+/* Ensures that the sidebar doesn't overlap the content */
+@media (max-width: 900px) {
+    .content {
+        margin-left: 0;
+    }
+
+    .sidebar-left {
+        position: relative;
+        width: 100%;
+    }
+}
+
+/* .container {
+    display: flex;
+    height: 100vh;
+} */
+
+/* .sidebar {
     width: 270px;
     padding: 20px;
     background-color: #f4f4f4;
@@ -24,7 +63,7 @@ body {
 
 .sidebar h2 {
     margin-top: 0;
-}
+} */
 
 .pinned-container {
     display: flex;
@@ -47,7 +86,7 @@ body {
     height: 100%;
 }
 
-.sidebar input[type="text"] {
+.sidebar-left input[type="text"] {
     width: 90%;
     padding: 10px;
     margin-bottom: 20px;
@@ -55,12 +94,12 @@ body {
     border-radius: 4px;
 }
 
-.sidebar #tag-container {
+.sidebar-left #tag-container {
     display: flex;
     flex-wrap: wrap;
 }
 
-.sidebar .chip {
+.sidebar-left .chip {
     background-color: #e0e0e0;
     border-radius: 16px;
     /* padding: 8px 12px; */
@@ -68,12 +107,12 @@ body {
     cursor: pointer;
 }
 
-.sidebar .chip.selected {
+.sidebar-left .chip.selected {
     background-color: #007bff;
     color: white;
 }
 
-.sidebar button {
+.sidebar-left button {
     display: block;
     width: 30%;
     padding: 10px;
@@ -88,18 +127,17 @@ body {
     font-size: smaller;
 }
 
-.sidebar button:hover {
+.sidebar-left button:hover {
     background-color: #0056b3;
 }
 
-.content {
-    /* Offset by the sidebar width */
-    /* margin-left: 270px;  */
+/* .content {
+    margin-left: 20px; 
     padding: 20px;
-    /* width: calc(100% - 270px); */
-    width: 100%;
+    width: calc(100% - 20px);
     overflow-y: auto;
-}
+} 
+*/
 
 select#search-engine {
     display: flex !important;
@@ -221,4 +259,24 @@ h1, h2, h3 {
 
 .tile-content .chip:hover {
     background-color: #ccc;
+}
+
+.tile[data-tags*="qualif"] {
+    border: 2px solid rgb(46, 157, 114);
+}
+
+.tile[data-tags*="stage"] {
+    border: 2px solid rgb(226, 36, 240);
+}
+
+.tile[data-tags*="staging"] {
+    border: 2px solid rgb(226, 36, 240);
+}
+
+.tile[data-tags*="production"] {
+    border: 2px solid red;
+}
+
+.tile[data-tags*="admin"] {
+    border: 2px solid rgb(243, 105, 6);
 }

@@ -1,6 +1,6 @@
 home:
   email: me@acme.com
-  username: "🚀 Me."
+  username: "\U0001F680 Me."
   bg-color: '#00FAFA'
   bookmarks:
   - folder: ai
